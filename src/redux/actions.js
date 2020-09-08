@@ -13,13 +13,9 @@ export const fetchArticles = () => {
     // with the list of articles from the API call
     return (dispatch) => {
         fetch(url)
-            .then(res => res.json())
+            .then(response => response.json())
             .then(response => {
-                const action = {
-                    type: 'FETCH_ARTICLES',
-                    value: response.articles
-                }
-                dispatch(action)
+                dispatch(articleAction(response.articles))
             })
     }
 }
